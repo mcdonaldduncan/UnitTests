@@ -16,6 +16,7 @@ namespace UnitTests
         {
             string first = "Jim";
             string last = "Doe";
+
             var result = utility.ConcatName(first, last);
 
             Assert.Equal("Jim, Doe", result);
@@ -33,45 +34,47 @@ namespace UnitTests
         }
 
         [Fact]
-        public void TestGetFloorRational()
+        public void TestConcatNames3()
         {
-            double value = 5.7;
-            var result = utility.GetFloor(value);
+            string first = "Jeff";
+            string last = "Jones";
 
-            Assert.Equal(5, result);
+            var result = utility.ConcatName(first, last);
+
+            Assert.Equal("Jeff, Jones", result);
         }
 
         [Theory]
-        [InlineData(5.8)]
-        [InlineData(10.5)]
-        [InlineData(3.2)]
-        public void TestGetFloorNaturalNumber(double input)
+        [InlineData("Jim", "Doe")]
+        [InlineData("Ari", "Smith")]
+        [InlineData("Jeff", "Jones")]
+        public void TestConcatTheory(string first, string last)
         {
-            var result = utility.GetFloor(input);
+            var result = utility.ConcatName(first, last);
 
-            Assert.True(result % 1 == 0);
+            Assert.Equal(result, string.Concat(first, ", ", last));
         }
 
         [Theory]
-        [InlineData(5.8)]
-        [InlineData(10.5)]
-        [InlineData(3.2)]
-        public void TestGetFloorIsGetFloor(double input)
+        [InlineData("Jim", "Doe")]
+        [InlineData("Ari", "Smith")]
+        [InlineData("Jeff", "Jones")]
+        public void TestConcatTheory2(string first, string last)
         {
-            var result = utility.GetFloor(input);
+            var result = utility.ConcatName(first, last);
 
-            Assert.Equal(result, Math.Floor(input));
+            Assert.True(result == $"{first}, {last}");
         }
 
         [Theory]
-        [InlineData(5.8)]
-        [InlineData(10.5)]
-        [InlineData(3.2)]
-        public void TestGetFloorIsGetFloor2(double input)
+        [InlineData("Jim", "Doe")]
+        [InlineData("Ari", "Smith")]
+        [InlineData("Jeff", "Jones")]
+        public void TestConcatTheory3(string first, string last)
         {
-            var result = utility.GetFloor(input);
+            var result = utility.ConcatName(first, last);
 
-            Assert.Equal(result, MathF.Floor((float)input));
+            Assert.False(result == string.Empty);
         }
     }
 }
