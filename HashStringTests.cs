@@ -11,37 +11,13 @@ namespace UnitTests
     {
         public Utility utility = new Utility();
 
-        /*
-        public string HashString(string input)
-        {
-            using (SHA256 hasher = SHA256.Create())
-            {
-                var bytes = hasher.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-
-                return builder.ToString();
-            }
-        }
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         */
-
-
+        private int hashLength = 64;
 
         [Fact]
         public void TestHashString()
         {
-            string input = "";
-            string expected = "";
+            string input = "password";
+            string expected = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8";
 
             var result = utility.HashString(input);
 
@@ -51,8 +27,8 @@ namespace UnitTests
         [Fact]
         public void TestHashString2()
         {
-            string input = "";
-            string expected = "";
+            string input = "Test123";
+            string expected = "d9b5f58f0b38198293971865a14074f59eba3e82595becbe86ae51f1d9f1f65e";
 
             var result = utility.HashString(input);
 
@@ -60,10 +36,10 @@ namespace UnitTests
         }
 
         [Fact]
-        public void TestConcatNames3()
+        public void TestHashString3()
         {
-            string input = "";
-            string expected = "";
+            string input = "test123";
+            string expected = "ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae";
 
             var result = utility.HashString(input);
 
@@ -74,33 +50,37 @@ namespace UnitTests
         [InlineData("password")]
         [InlineData("Test123")]
         [InlineData("test123")]
-        public void TestConcatTheory(string input)
+        public void TestHashLengthTheory(string input)
         {
             var result = utility.HashString(input);
 
-            Assert.Equal(result, "");
+            Assert.Equal(result.Length, hashLength);
         }
 
         [Theory]
-        [InlineData("Jim", "Doe")]
-        [InlineData("Ari", "Smith")]
-        [InlineData("Jeff", "Jones")]
-        public void TestConcatTheory2(string first, string last)
+        [InlineData("password", "password")]
+        [InlineData("Test123", "Test123")]
+        [InlineData("test123", "test123")]
+        public void TestHashConsistencyTheory(string input, string input2)
         {
-            var result = utility.ConcatName(first, last);
+            var result = utility.HashString(input);
+            var result2 = utility.HashString(input2);
 
-            Assert.True(result == $"{first}, {last}");
+            Assert.Equal(result, result2);
         }
 
         [Theory]
-        [InlineData("Jim", "Doe")]
-        [InlineData("Ari", "Smith")]
-        [InlineData("Jeff", "Jones")]
-        public void TestConcatTheory3(string first, string last)
+        [InlineData("password", "Test123")]
+        [InlineData("Test123", "test123")]
+        [InlineData("test123", "password")]
+        public void TestHashCollisionTheory(string input, string input2)
         {
-            var result = utility.ConcatName(first, last);
+            var result = utility.HashString(input);
+            var result2 = utility.HashString(input2);
 
-            Assert.False(result == string.Empty);
+            Assert.NotEqual(result, result2);
         }
+
+        
     }
 }
