@@ -8,16 +8,16 @@ using UnitTestingWeek7;
 
 namespace UnitTests
 {
-    public class IsPrime_Tests
+    public class IsPrimeTests
     {
-        Utility utility_test = new Utility();
+        Utility utility = new Utility();
 
         [Fact]
         public void IsNotPrimeFact()
         {
             int input = 15;
 
-            var result = utility_test.IsPrime(input);
+            var result = utility.IsPrime(input);
 
             Assert.False(result);
         }
@@ -28,7 +28,7 @@ namespace UnitTests
             int input = 13;
 
 
-            var result = utility_test.IsPrime(input);
+            var result = utility.IsPrime(input);
             Assert.True(result);
         }
 
@@ -37,7 +37,7 @@ namespace UnitTests
         {
             int input = 1;
 
-            var result = utility_test.IsPrime(input);
+            var result = utility.IsPrime(input);
             Assert.False(result);
         }
 
@@ -49,7 +49,7 @@ namespace UnitTests
         [InlineData(2)]
         public void IsPrimeTheory(int input)
         {
-            var result = utility_test.IsPrime(input);
+            var result = utility.IsPrime(input);
 
             Assert.True(result);
         }
@@ -61,10 +61,12 @@ namespace UnitTests
         [InlineData(20)]
         public void IsNotPrimeTheory(int input)
         {
-            var result = utility_test.IsPrime(input);
+            var result = utility.IsPrime(input);
 
             Assert.False(result);
         }
+
+
     }
 }
 
