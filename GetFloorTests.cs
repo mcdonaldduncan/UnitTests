@@ -7,7 +7,7 @@ namespace UnitTests
         public Utility utility = new Utility();
 
         [Fact]
-        public void TestGetFloor()
+        public void TestGetFloorWithKnownValueA()
         {
             double value = 5;
             var result = utility.GetFloor(value);
@@ -16,7 +16,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void TestGetFloor2()
+        public void TestGetFloorWithKnownValueB()
         {
             double value = 10;
             var result = utility.GetFloor(value);
@@ -25,7 +25,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void TestGetFloorRational()
+        public void TestGetFloorWithKnownValueC()
         {
             double value = 5.7;
             var result = utility.GetFloor(value);
@@ -37,7 +37,7 @@ namespace UnitTests
         [InlineData(5.8)]
         [InlineData(10.5)]
         [InlineData(3.2)]
-        public void TestGetFloorNaturalNumber(double input)
+        public void TestGetFloorIsNaturalNumber(double input)
         {
             var result = utility.GetFloor(input);
 
@@ -48,7 +48,7 @@ namespace UnitTests
         [InlineData(5.8)]
         [InlineData(10.5)]
         [InlineData(3.2)]
-        public void TestGetFloorIsGetFloor(double input)
+        public void TestGetFloor_EqualMath_Floor(double input)
         {
             var result = utility.GetFloor(input);
 
@@ -59,7 +59,7 @@ namespace UnitTests
         [InlineData(5.8)]
         [InlineData(10.5)]
         [InlineData(3.2)]
-        public void TestGetFloorIsGetFloor2(double input)
+        public void TestGetFloor_EqualMathF_Floor(double input)
         {
             var result = utility.GetFloor(input);
 

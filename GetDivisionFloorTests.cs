@@ -12,7 +12,7 @@ namespace UnitTests
         Utility utility = new Utility();
 
         [Fact]
-        public void GetDivisionFloorFactA()
+        public void TestGetDivisionFloorWithNumeratorA()
         {
             int a = 15;
             int b = 10;
@@ -23,7 +23,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void GetDivisionFloorFactB()
+        public void TestGetDivisionFloorWithNumeratorB()
         {
             int a = 5;
             int b = 50;
@@ -34,7 +34,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void IsZeroSafe()
+        public void TestGetDivisionFloorIsZeroSafe()
         {
             int a = 0;
             int b = 0;
@@ -50,7 +50,7 @@ namespace UnitTests
         [InlineData(0, 3)]
         [InlineData(7, 0)]
         [InlineData(0, 2)]
-        public void IsZeroSafeTheory(int a, int b)
+        public void TestGetDivisionFloorIsZeroSafeTheory(int a, int b)
         {
             var result = utility.GetDivisionFloor(a, b);
 
@@ -62,7 +62,7 @@ namespace UnitTests
         [InlineData(1, 1)]
         [InlineData(8, 8)]
         [InlineData(20, 20)]
-        public void HandleEqualInputs(int a, int b)
+        public void TestGetDivisionFloorHandleEqualInputs(int a, int b)
         {
             var result = utility.GetDivisionFloor(a, b);
 
@@ -74,7 +74,7 @@ namespace UnitTests
         [InlineData(3, 1)]
         [InlineData(7, 5)]
         [InlineData(5, 2)]
-        public void HandleCaseATheory(int a, int b)
+        public void TestGetDivisionFloorHandleCaseATheory(int a, int b)
         {
             var result = utility.GetDivisionFloor(a, b);
 
@@ -86,7 +86,7 @@ namespace UnitTests
         [InlineData(3, 7)]
         [InlineData(7, 32)]
         [InlineData(5, 25)]
-        public void HandleCaseBTheory(int a, int b)
+        public void TestGetDivisionFloorHandleCaseBTheory(int a, int b)
         {
             var result = utility.GetDivisionFloor(a, b);
 

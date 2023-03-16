@@ -12,7 +12,7 @@ namespace UnitTests
         Utility utility = new Utility();
 
         [Fact]
-        public void TestGetNonPrimeDivisors()
+        public void TestGetNonPrimeDivisorsWithKnownOutcome()
         {
             int input = 24;
 
@@ -47,7 +47,7 @@ namespace UnitTests
         [InlineData(72)]
         [InlineData(8)]
         [InlineData(50)]
-        public void TestNoPrimeEntries(int input)
+        public void TestGetNonPrimeDivisorsNoPrimeEntries(int input)
         {
             var result = utility.GetNonPrimeDivisors(input);
 
@@ -59,7 +59,7 @@ namespace UnitTests
         [InlineData(72)]
         [InlineData(8)]
         [InlineData(20)]
-        public void TestResultsFound(int input)
+        public void TestGetNonPrimeDivisorsResultsFound(int input)
         {
             var result = utility.GetNonPrimeDivisors(input);
 
@@ -71,7 +71,7 @@ namespace UnitTests
         [InlineData(72)]
         [InlineData(8)]
         [InlineData(50)]
-        public void TestDivisorValidity(int input)
+        public void TestGetNonPrimeDivisorsDivisorValidity(int input)
         {
             var result = utility.GetNonPrimeDivisors(input);
 

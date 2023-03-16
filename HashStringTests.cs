@@ -14,7 +14,7 @@ namespace UnitTests
         private int hashLength = 64;
 
         [Fact]
-        public void TestHashString()
+        public void TestHashStringWithKnownOutcomeA()
         {
             string input = "password";
             string expected = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8";
@@ -25,7 +25,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void TestHashString2()
+        public void TestHashStringWithKnownOutcomeB()
         {
             string input = "Test123";
             string expected = "d9b5f58f0b38198293971865a14074f59eba3e82595becbe86ae51f1d9f1f65e";
@@ -36,7 +36,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void TestHashString3()
+        public void TestHashStringWithKnownOutcomeC()
         {
             string input = "test123";
             string expected = "ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae";
@@ -50,7 +50,7 @@ namespace UnitTests
         [InlineData("password")]
         [InlineData("Test123")]
         [InlineData("test123")]
-        public void TestHashLengthTheory(string input)
+        public void TestHashString_HashLengthTheory(string input)
         {
             var result = utility.HashString(input);
 
@@ -61,7 +61,7 @@ namespace UnitTests
         [InlineData("password", "password")]
         [InlineData("Test123", "Test123")]
         [InlineData("test123", "test123")]
-        public void TestHashConsistencyTheory(string input, string input2)
+        public void TestHashString_HashConsistencyTheory(string input, string input2)
         {
             var result = utility.HashString(input);
             var result2 = utility.HashString(input2);
@@ -73,7 +73,7 @@ namespace UnitTests
         [InlineData("password", "Test123")]
         [InlineData("Test123", "test123")]
         [InlineData("test123", "password")]
-        public void TestHashCollisionTheory(string input, string input2)
+        public void TestHashString_HashCollisionTheory(string input, string input2)
         {
             var result = utility.HashString(input);
             var result2 = utility.HashString(input2);

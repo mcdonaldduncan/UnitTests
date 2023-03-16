@@ -12,7 +12,7 @@ namespace UnitTests
         public Utility utility = new Utility();
 
         [Fact]
-        public void TestConcatNames()
+        public void TestConcatNamesWithKnownOutcomeA()
         {
             string first = "Jim";
             string last = "Doe";
@@ -23,7 +23,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void TestConcatNames2()
+        public void TestConcatNamesWithKnownOutcomeB()
         {
             string first = "Ari";
             string last = "Smith";
@@ -34,7 +34,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void TestConcatNames3()
+        public void TestConcatNamesWithKnownOutcomeC()
         {
             string first = "Jeff";
             string last = "Jones";
@@ -48,7 +48,7 @@ namespace UnitTests
         [InlineData("Jim", "Doe")]
         [InlineData("Ari", "Smith")]
         [InlineData("Jeff", "Jones")]
-        public void TestConcatTheory(string first, string last)
+        public void TestConcatNames_StringConcat(string first, string last)
         {
             var result = utility.ConcatName(first, last);
 
@@ -59,7 +59,7 @@ namespace UnitTests
         [InlineData("Jim", "Doe")]
         [InlineData("Ari", "Smith")]
         [InlineData("Jeff", "Jones")]
-        public void TestConcatTheory2(string first, string last)
+        public void TestConcatNames_StringInterpolation(string first, string last)
         {
             var result = utility.ConcatName(first, last);
 
@@ -70,7 +70,7 @@ namespace UnitTests
         [InlineData("Jim", "Doe")]
         [InlineData("Ari", "Smith")]
         [InlineData("Jeff", "Jones")]
-        public void TestConcatTheory3(string first, string last)
+        public void TestConcatNames_StringNotEmpty(string first, string last)
         {
             var result = utility.ConcatName(first, last);
 

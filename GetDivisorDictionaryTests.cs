@@ -12,7 +12,7 @@ namespace UnitTests
         Utility utility = new Utility();
 
         [Fact]
-        public void TestGetDivisorDictionary()
+        public void TestGetDivisorDictionaryWithKnownOutcome()
         {
             int input = 30;
 
@@ -53,7 +53,7 @@ namespace UnitTests
         [InlineData(72)]
         [InlineData(8)]
         [InlineData(50)]
-        public void TestNoEvenKeys(int input)
+        public void TestGetDivisorDictionaryNoEvenKeys(int input)
         {
             var result = utility.GetDivisorDictionary(input);
 
@@ -65,7 +65,7 @@ namespace UnitTests
         [InlineData(72)]
         [InlineData(8)]
         [InlineData(20)]
-        public void TestResultsFound(int input)
+        public void TestGetDivisorDictionaryResultsFound(int input)
         {
             var result = utility.GetDivisorDictionary(input);
 
@@ -77,7 +77,7 @@ namespace UnitTests
         [InlineData(72)]
         [InlineData(8)]
         [InlineData(50)]
-        public void TestDivisorValidity(int input)
+        public void TestGetDivisorDictionaryDivisorValidity(int input)
         {
             var result = utility.GetDivisorDictionary(input);
 

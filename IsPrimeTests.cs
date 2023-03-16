@@ -13,7 +13,7 @@ namespace UnitTests
         Utility utility = new Utility();
 
         [Fact]
-        public void IsNotPrimeFact()
+        public void TestIsPrime_IsNotPrimeFact()
         {
             int input = 15;
 
@@ -23,7 +23,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void IsPrimeFact()
+        public void TestIsPrime_IsPrimeFact()
         {
             int input = 13;
 
@@ -33,7 +33,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void IsOnePrime()
+        public void TestIsPrime_OneNotPrime()
         {
             int input = 1;
 
@@ -47,7 +47,7 @@ namespace UnitTests
         [InlineData(3)]
         [InlineData(7)]
         [InlineData(2)]
-        public void IsPrimeTheory(int input)
+        public void TestIsPrime_IsPrimeTheory(int input)
         {
             var result = utility.IsPrime(input);
 
@@ -59,7 +59,7 @@ namespace UnitTests
         [InlineData(1)]
         [InlineData(8)]
         [InlineData(20)]
-        public void IsNotPrimeTheory(int input)
+        public void TestIsPrime_IsNotPrimeTheory(int input)
         {
             var result = utility.IsPrime(input);
 
@@ -71,7 +71,7 @@ namespace UnitTests
         [InlineData(3)]
         [InlineData(7)]
         [InlineData(5)]
-        public void IsNotEven(int input)
+        public void TestIsPrime_IsNotEven(int input)
         {
             var result = utility.IsPrime(input);
 
