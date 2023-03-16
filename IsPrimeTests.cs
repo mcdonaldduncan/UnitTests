@@ -33,7 +33,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void IsOne()
+        public void IsOnePrime()
         {
             int input = 1;
 
@@ -66,7 +66,17 @@ namespace UnitTests
             Assert.False(result);
         }
 
+        [Theory]
+        [InlineData(13)]
+        [InlineData(3)]
+        [InlineData(7)]
+        [InlineData(5)]
+        public void IsNotEven(int input)
+        {
+            var result = utility.IsPrime(input);
 
+            Assert.Equal(result, input % 2 != 0);
+        }
     }
 }
 
